@@ -7,8 +7,12 @@ class NotesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
