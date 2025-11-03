@@ -10,7 +10,7 @@ class NoteItem extends StatelessWidget {
         color: const Color.fromARGB(255, 170, 114, 30),
         borderRadius: BorderRadius.circular(18.0),
       ),
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 16.0,bottom: 16.0,left: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -20,7 +20,7 @@ class NoteItem extends StatelessWidget {
               child: Text(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                "Flutter Tips sdadasd",
+                "Flutter Tips",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 26,
@@ -46,9 +46,12 @@ class NoteItem extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20.0),
-          const Text(
-            'Nov 3,2025',
-            style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+          const Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: Text(
+              'Nov 3,2025',
+              style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+            ),
           ),
         ],
       ),
