@@ -20,14 +20,18 @@ class NotesBody extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              CustomAppBar(),
-              SizedBox(height: 30.0,),
-              NotesList(),
+              CustomAppBar(
+                title: "Notes",
+                icon: Icons.search,
+                onPressed: () {},
+              ),
+              const SizedBox(height: 30.0,),
+              const NotesList(),
             ],
           ),
         ),
