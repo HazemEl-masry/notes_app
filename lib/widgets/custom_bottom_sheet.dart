@@ -20,7 +20,10 @@ class CustomBottomSheet extends StatelessWidget {
           const SizedBox(height: 20.0),
           CustomField(hintText: "Content", maxLines: 10, onChanged: (data) {}),
           const Spacer(),
-          const CustomButton(),
+          CustomButton(
+            text: "Add Note",
+            onTap: () {},
+          ),
         ],
       ),
     );

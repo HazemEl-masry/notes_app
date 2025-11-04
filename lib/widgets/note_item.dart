@@ -10,7 +10,7 @@ class NoteItem extends StatelessWidget {
         color: const Color.fromARGB(255, 170, 114, 30),
         borderRadius: BorderRadius.circular(18.0),
       ),
-      padding: const EdgeInsets.only(top: 16.0,bottom: 16.0,left: 16.0),
+      padding: const EdgeInsets.only(top: 16.0,bottom: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -18,7 +18,7 @@ class NoteItem extends StatelessWidget {
             title: const Padding(
               padding: EdgeInsets.only(bottom: 20.0),
               child: Text(
-                maxLines: 1,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 "Flutter Tips",
                 style: TextStyle(
