@@ -5,11 +5,11 @@ class CustomField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.maxLines,
-    required this.onChanged,
+    required this.onSaved,
   });
   final String hintText;
   final int maxLines;
-  final Function(String)? onChanged;
+  final Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,14 @@ class CustomField extends StatelessWidget {
         hintText: hintText,
       ),
       maxLines: maxLines,
-      onChanged: onChanged,
+      onSaved: onSaved,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return "Field is required";
+        } else {
+          return null;
+        }
+      },
     );
   }
 }

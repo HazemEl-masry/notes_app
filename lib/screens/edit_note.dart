@@ -24,13 +24,13 @@ class EditNote extends StatelessWidget {
               CustomField(
                 hintText: "Title",
                 maxLines: 1,
-                onChanged: (data) {},
+                onSaved: (data) {},
               ),
               const SizedBox(height: 20.0),
               CustomField(
                 hintText: "Content",
                 maxLines: 10,
-                onChanged: (data) {},
+                onSaved: (data) {},
               ),
             ],
           ),
