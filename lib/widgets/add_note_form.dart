@@ -39,7 +39,7 @@ class _MyWidgetState extends State<AddNoteForm> {
               subTitle = data;
             },
           ),
-          const Spacer(),
+          const SizedBox(height: 80,),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -65,6 +65,7 @@ class _MyWidgetState extends State<AddNoteForm> {
               );
             },
           ),
+          const SizedBox(height: 20,)
         ],
       ),
     );
