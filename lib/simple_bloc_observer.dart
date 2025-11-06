@@ -1,25 +1,26 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimpleBlocObserver implements BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    debugPrint("change: $change");
+    log("Change: $change");
   }
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
+    log("Close: $bloc");
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
+    log("Create: $bloc");
   }
 
   @override
   void onDone(Bloc bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
-    // TODO: implement onDone
+    log("Done: (Event: $event,Error: $error,StacTrace $stackTrace)");
   }
 
   @override

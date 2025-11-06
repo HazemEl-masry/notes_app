@@ -12,7 +12,8 @@ class NotesBody extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-            scrollControlDisabledMaxHeightRatio: 0.80,
+            scrollControlDisabledMaxHeightRatio: 0.70,
+            showDragHandle: true,
             context: context, builder: (context) {
             return const CustomBottomSheet();
           },
