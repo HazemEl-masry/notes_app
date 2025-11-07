@@ -10,44 +10,34 @@ class NotesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit()..fetchAllNotes(),
-      child: Scaffold(
-        floatingActionButton: Builder(
-          builder: (fabContext) {
-            return FloatingActionButton(
-              onPressed: () {
-                final notesCubit = BlocProvider.of<NotesCubit>(fabContext);
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  showDragHandle: true,
-                  context: fabContext,
-                  builder: (_) {
-                    return BlocProvider.value(
-                      value: notesCubit,
-                      child: const CustomBottomSheet(),
-                    );
-                  },
-                );
-              },
-              child: const Icon(Icons.add),
-            );
-          },
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                CustomAppBar(
-                  title: "Notes",
-                  icon: Icons.search,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 30.0),
-                const Expanded(child: NotesList()),
-              ],
-            ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              BlocProvider.of<NotesCubit>(context);
+              showModalBottomSheet(
+                isScrollControlled: true,
+                showDragHandle: true,
+                context: context,
+                builder: (context) {
+                  return const CustomBottomSheet();
+                },
+              );
+            },
+            child: const Icon(Icons.add),
+          ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              CustomAppBar(
+                title: "Notes",
+                icon: Icons.search,
+                onPressed: () {},
+              ),
+              const SizedBox(height: 30.0),
+              const Expanded(child: NotesList()),
+            ],
           ),
         ),
       ),

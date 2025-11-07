@@ -54,7 +54,7 @@ class _MyWidgetState extends State<AddNoteForm> {
                     formKey.currentState!.save();
                     var addNoteModel = NoteModel(
                       title: title!,
-                      subTitle: subTitle!,
+                      contant: subTitle!,
                       date: formatedDate.toString(),
                       // ignore: deprecated_member_use
                       color: Colors.blue.value,

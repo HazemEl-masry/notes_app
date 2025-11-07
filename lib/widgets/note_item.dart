@@ -15,7 +15,7 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const EditNote()),
+          MaterialPageRoute(builder: (context) => EditNote(notes: notes,)),
         );
       },
       child: Container(
@@ -45,7 +45,7 @@ class NoteItem extends StatelessWidget {
               subtitle: Text(
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                notes.subTitle,
+                notes.contant,
                 style: const TextStyle(
                   color: Colors.white60,
                   fontWeight: FontWeight.bold,

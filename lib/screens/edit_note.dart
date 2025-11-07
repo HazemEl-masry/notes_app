@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_field.dart';
 
-class EditNote extends StatelessWidget {
-  const EditNote({super.key});
+class EditNote extends StatefulWidget {
+  const EditNote({super.key, required this.notes});
+  final NoteModel notes;
 
+  @override
+  State<EditNote> createState() => _EditNoteState();
+}
+
+class _EditNoteState extends State<EditNote> {
+  String? title,contant;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +27,28 @@ class EditNote extends StatelessWidget {
                 title: "Edit Notes",
                 icon: Icons.check,
                 onPressed: () {
+                  widget.notes.title = title ?? widget.notes.title;
+                  widget.notes.contant = contant ?? widget.notes.contant;
+                  widget.notes.save();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                   Navigator.pop(context);
                 },
               ),
               const SizedBox(height: 50.0),
               CustomField(
-                hintText: "Title",
+                hintText: widget.notes.title,
                 maxLines: 1,
-                onSaved: (data) {},
+                onChanged: (value) {
+                  title = value;
+                },
               ),
               const SizedBox(height: 20.0),
               CustomField(
-                hintText: "Content",
+                hintText: widget.notes.contant,
                 maxLines: 10,
-                onSaved: (data) {},
+                onChanged: (value) {
+                  contant =value;
+                },
               ),
             ],
           ),
