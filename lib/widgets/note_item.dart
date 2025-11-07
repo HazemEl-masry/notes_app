@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/screens/edit_note.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.notes});
+
+  final NoteModel notes;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,8 @@ class NoteItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 170, 114, 30),
+          // color: const Color.fromARGB(255, 170, 114, 30),
+          color: Color(notes.color),
           borderRadius: BorderRadius.circular(18.0),
         ),
         padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
@@ -23,24 +27,24 @@ class NoteItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Padding(
-                padding: EdgeInsets.only(bottom: 20.0),
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
                 child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  "Flutter Tips",
-                  style: TextStyle(
+                  notes.title,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              subtitle: const Text(
+              subtitle: Text(
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                "Stay focus in your way",
-                style: TextStyle(
+                notes.subTitle,
+                style: const TextStyle(
                   color: Colors.white60,
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
@@ -54,11 +58,11 @@ class NoteItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20.0),
-            const Padding(
-              padding: EdgeInsets.only(right: 16.0),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
               child: Text(
-                'Nov 3,2025',
-                style: TextStyle(
+                notes.date,
+                style: const TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
