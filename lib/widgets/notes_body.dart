@@ -11,21 +11,28 @@ class NotesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NotesCubit(),
+      create: (context) => NotesCubit()..fetchAllNotes(),
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              // scrollControlDisabledMaxHeightRatio: 0.7,
-              showDragHandle: true,
-              context: context,
-              builder: (context) {
-                return const CustomBottomSheet();
+        floatingActionButton: Builder(
+          builder: (fabContext) {
+            return FloatingActionButton(
+              onPressed: () {
+                final notesCubit = BlocProvider.of<NotesCubit>(fabContext);
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  showDragHandle: true,
+                  context: fabContext,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value: notesCubit,
+                      child: const CustomBottomSheet(),
+                    );
+                  },
+                );
               },
+              child: const Icon(Icons.add),
             );
           },
-          child: const Icon(Icons.add),
         ),
         body: SafeArea(
           child: Padding(
@@ -38,7 +45,7 @@ class NotesBody extends StatelessWidget {
                   onPressed: () {},
                 ),
                 const SizedBox(height: 30.0),
-                const NotesList(),
+                const Expanded(child: NotesList()),
               ],
             ),
           ),

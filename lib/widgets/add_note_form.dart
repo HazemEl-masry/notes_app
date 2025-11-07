@@ -52,6 +52,7 @@ class _MyWidgetState extends State<AddNoteForm> {
                       title: title!,
                       subTitle: subTitle!,
                       date: DateTime.now().toString(),
+                      // ignore: deprecated_member_use
                       color: Colors.blue.value,
                     );
                     BlocProvider.of<AddNoteCubit>(
